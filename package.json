@@ -1,7 +1,7 @@
 {
   "name": "casumo_assessment",
   "version": "1.0.0",
-  "description": "Miguel Gimenez Casumo Assessment",
+  "description": "Miguel Gimenez Tiendeo Assessment",
   "main": "server.js",
   "scripts": {
     "start": "npm run build && NODE_ENV=production node server.js",
@@ -39,7 +39,8 @@
     "redux": "3.7.2",
     "redux-logger": "3.0.6",
     "request": "^2.85.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-core": "6.26.0",

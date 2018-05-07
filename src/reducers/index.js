@@ -1,9 +1,6 @@
-import author from './author'
-import book from './book'
-import genre from './genre'
+import card from './card'
 
 export default {
-  author,
-  book,
-  genre
+  card
+
 }
