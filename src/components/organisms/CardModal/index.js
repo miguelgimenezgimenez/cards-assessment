@@ -1,26 +1,38 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import Dialog from 'material-ui/Dialog'
 import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
 
-import FlatButton from 'material-ui/FlatButton'
-import { connect } from 'react-redux'
 import * as cardActions from '../../../actions/card'
 
 class CardModal extends Component {
+  createCard () {
+    cardActions.setCardInfo(this.props.dispatch)
+  }
+
   updateCurrentCard (event, field) {
     cardActions.updateCurrentCard(this.props.dispatch, event.target.value, field)
   }
 
   render () {
-    const actions = [<FlatButton
-      label="Cancel"
-      primary
+    const { currentCard, open } = this.props
+
+    const actions = [<RaisedButton
+      label="Cancelar"
+      secondary
+      style={{ width: 120 }}
       onClick={
         () => cardActions.toggleModal(this.props.dispatch, false)
       }
+    />, <RaisedButton
+      label={currentCard.id ? 'Guardar Cambios' : 'Añadir'}
+      secondary
+      style={{ marginLeft: 30, width: 120 }}
+      onClick={() => this.createCard()}
     />
     ]
-    const { open } = this.props
     return (
       <div>
         <Dialog
@@ -32,13 +44,18 @@ class CardModal extends Component {
           open={open}
         >
           <TextField
-            onChange={e => this.updateCurrentCard(e, 'Title')}
+            onChange={e => this.updateCurrentCard(e, 'title')}
             floatingLabelText="Titulo"
           /> <br />
 
           <TextField
-            onChange={e => this.updateCurrentCard(e, 'Description')}
+            onChange={e => this.updateCurrentCard(e, 'description')}
             floatingLabelText="Descripcion"
+          /> <br />
+
+          <TextField
+            onChange={e => this.updateCurrentCard(e, 'imageUrl')}
+            floatingLabelText="Imagen (Url)"
           /> <br />
 
         </Dialog>
@@ -48,7 +65,9 @@ class CardModal extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isModalOpen: state.card.isModalOpen
+  isModalOpen: state.card.isModalOpen,
+  currentCard: state.card.current
+
 })
 
 export default connect(mapStateToProps)(CardModal)

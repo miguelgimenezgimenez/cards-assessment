@@ -5,7 +5,10 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
 import * as cardActions from '../../../actions/card'
-import CardModal from '../../organisms/CardModal/index'
+import CardModal from '../../organisms/CardModal'
+import Card from '../../organisms/Card'
+import Iterator from '../../../../utils/Iterator'
+import style from './style.scss'
 
 class App extends Component {
   componentDidMount () {
@@ -17,13 +20,24 @@ class App extends Component {
   }
 
   render () {
-    const { isModalOpen } = this.props
+    const { isModalOpen, cardList } = this.props
     return (
       <div >
         <CardModal open={isModalOpen} />
 
+        <div className={style.cardContainer} >
+          <Iterator
+            iterable={cardList}
+            component={(card, id) => <Card title={card.title} description={card.description} key={id} id={id} />}
+          />
+        </div>
         <FloatingActionButton
-          onClick={() => this.openModal()}
+          className={
+            style.addButton
+          }
+          onClick={
+            () => this.openModal()
+          }
           secondary
         >
           <ContentAdd />
@@ -33,7 +47,8 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isModalOpen: state.card.isModalOpen
+  isModalOpen: state.card.isModalOpen,
+  cardList: state.card.cardList
 })
 
 export default connect(mapStateToProps)(App)

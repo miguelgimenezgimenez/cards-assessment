@@ -1,4 +1,4 @@
-const uuid = require('uuid')
+const uuidv4 = require('uuid/v4')
 
 const INITIAL_STATE = {
   error: null,
@@ -6,24 +6,29 @@ const INITIAL_STATE = {
   current: {
     title: '',
     description: '',
-    imageUrl: ''
+    imageUrl: '',
+    id: ''
   },
   isModalOpen: false
 }
 
 const setError = (state, error) => ({ ...state, error, loading: false })
 
-const createCard = (state, data) => {
-  const { title, description, imageUrl } = data
-  const cardList = JSON.parse(window.localStorage.getItem('cardList') || {})
-  const id = uuid.v4
+const setCardInfo = (state, cardId) => {
+  const { title, description, imageUrl } = state.current
+  let cardList = window.localStorage.getItem('cardList')
+  cardList = JSON.parse(cardList) || {}
+
+  const id = cardId || uuidv4()
   cardList[id] = {
     title,
     description,
-    imageUrl
+    imageUrl: imageUrl || './logo-Tiendeo.png',
+    id
   }
+
   window.localStorage.setItem('cardList', JSON.stringify(cardList))
-  return { ...state, cardList, current: { title: '', description: '', imageUrl: '' } }
+  return { ...state, cardList, current: { title: '', description: '', imageUrl: '' }, isModalOpen: false }
 }
 const setCardList = (state, cardList) => ({ ...state, cardList })
 
@@ -33,10 +38,10 @@ const updateCurrentCard = (state, data) => ({ ...state, current: { ...state.curr
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'CARDS_LIST_ERROR':
+    case 'CARDS_ERROR':
       return setError(state, action.error)
-    case 'CREATE_CARD':
-      return createCard(state, action.data)
+    case 'SET_CARD_INFO':
+      return setCardInfo(state, action.id)
     case 'TOGGLE_MODAL':
       return toggleModal(state, action.isModalOpen)
     case 'SET_CARD_LIST':
