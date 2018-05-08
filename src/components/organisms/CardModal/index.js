@@ -8,8 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import * as cardActions from '../../../actions/card'
 
 class CardModal extends Component {
-  createCard () {
-    cardActions.setCardInfo(this.props.dispatch)
+  setCardInfo (id) {
+    cardActions.setCardInfo(this.props.dispatch, id)
   }
 
   updateCurrentCard (event, field) {
@@ -27,10 +27,10 @@ class CardModal extends Component {
         () => cardActions.toggleModal(this.props.dispatch, false)
       }
     />, <RaisedButton
-      label={currentCard.id ? 'Guardar Cambios' : 'Añadir'}
+      label={currentCard.id ? 'Guardar' : 'Añadir'}
       secondary
       style={{ marginLeft: 30, width: 120 }}
-      onClick={() => this.createCard()}
+      onClick={() => this.setCardInfo(currentCard.id)}
     />
     ]
     return (
@@ -67,7 +67,6 @@ class CardModal extends Component {
 const mapStateToProps = state => ({
   isModalOpen: state.card.isModalOpen,
   currentCard: state.card.current
-
 })
 
 export default connect(mapStateToProps)(CardModal)

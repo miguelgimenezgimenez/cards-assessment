@@ -12,6 +12,12 @@ const INITIAL_STATE = {
   isModalOpen: false
 }
 
+const deleteCard = (state, id) => {
+  const cardList = { ...state.cardList }
+  delete cardList[id]
+  window.localStorage.setItem('cardList', JSON.stringify(cardList))
+  return { ...state, cardList }
+}
 const setError = (state, error) => ({ ...state, error, loading: false })
 
 const setCardInfo = (state, cardId) => {
@@ -40,14 +46,22 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'CARDS_ERROR':
       return setError(state, action.error)
+
+    case 'DELETE_CARD':
+      return deleteCard(state, action.id)
+
     case 'SET_CARD_INFO':
       return setCardInfo(state, action.id)
+
     case 'TOGGLE_MODAL':
       return toggleModal(state, action.isModalOpen)
+
     case 'SET_CARD_LIST':
       return setCardList(state, action.cardList)
+
     case 'UPDATE_CURRENT_CARD':
       return updateCurrentCard(state, action.data)
+
     default:
       return state
   }

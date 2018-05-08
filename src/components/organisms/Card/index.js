@@ -16,7 +16,12 @@ class Card extends Component {
   }
 
   editCard (id) {
-    cardActions.setCardInfo(this.props.dispatch, id)
+    cardActions.updateCurrentCard(this.props.dispatch, id, 'id')
+    cardActions.toggleModal(this.props.dispatch, true)
+  }
+
+  deleteCard (id) {
+    cardActions.deleteCard(this.props.dispatch, id)
   }
 
   mouseOver (mouseOver) {
@@ -33,7 +38,7 @@ class Card extends Component {
 
       >
         <div className={style.mediaContainer} >
-          <img src={card.imageUrl} alt="" onError={this.setDefaultImage} />
+          <img src={card.imageUrl} alt="" onError={this.setImageError} />
           {card.title}
         </div>
         <div className={style.description} >

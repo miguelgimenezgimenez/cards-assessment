@@ -1,5 +1,5 @@
-export const setCardInfo = (dispatch, id) => {
-  dispatch({ type: 'SET_CARD_INFO', id })
+export const deleteCard = (dispatch, id) => {
+  dispatch({ type: 'DELETE_CARD', id })
 }
 
 export const list = (dispatch, letter) => {
@@ -7,6 +7,12 @@ export const list = (dispatch, letter) => {
   cardList = JSON.parse(cardList) || {}
   dispatch({
     type: 'SET_CARD_LIST', cardList
+  })
+}
+export const setCardInfo = (dispatch, id) => {
+  dispatch({
+    type: 'SET_CARD_INFO',
+    id
   })
 }
 
