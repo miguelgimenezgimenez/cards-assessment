@@ -7,9 +7,10 @@
     "start": "npm run build && NODE_ENV=production node server.js",
     "build": "rm -rf ./dist && webpack --config webpack.config.prod.js",
     "dev": "parallelshell 'webpack --watch' 'nodemon server.js'",
-    "test": "jest src/tests/**/*.js"
+    "test": "jest tests/**/*.js"
   },
   "jest": {
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.js"
     ],

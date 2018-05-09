@@ -15,6 +15,9 @@
         "localStorage": true
     },
     "rules": {
+        "no-case-declarations":"off",
+        "prefer-destructuring":"off",
+        "prefer-rest-params":"off",
         "object-curly-newline": 0,
         "class-methods-use-this": 0,
         "lines-between-class-members": 2,

@@ -16,14 +16,14 @@ const INITIAL_STATE = {
   isModalOpen: false
 }
 
-test('it updates current card fields without overwriting existing values', () => {
+test('it dispatches DELETE_CARD', () => {
   const store = mockStore(INITIAL_STATE)
   const expectedActions = [{ id: 1, type: 'DELETE_CARD' }]
   cardActions.deleteCard(store.dispatch, 1)
   expect(store.getActions()).toEqual(expectedActions)
 })
 
-test('it updates current card fields without overwriting existing values', () => {
+test('it dispatches SET_CARD_INFO with correct arguments', () => {
   const store = mockStore(INITIAL_STATE)
   const cardInfo = { description: 'Extreme Sport', title: 'Motocross' }
   const expectedActions = [{
@@ -34,5 +34,16 @@ test('it updates current card fields without overwriting existing values', () =>
       id: 1 }
   }]
   cardActions.setCardInfo(store.dispatch, 1, cardInfo)
+  expect(store.getActions()).toEqual(expectedActions)
+})
+
+test('it dispatches TOGGLE_MODAL ', () => {
+  const store = mockStore(INITIAL_STATE)
+
+  const expectedActions = [{
+    type: 'TOGGLE_MODAL',
+    isModalOpen: true
+  }]
+  cardActions.toggleModal(store.dispatch, true)
   expect(store.getActions()).toEqual(expectedActions)
 })
