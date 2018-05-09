@@ -1,16 +1,17 @@
+const uuidv4 = require('uuid/v4')
+
 export const deleteCard = (dispatch, id) => {
   dispatch({ type: 'DELETE_CARD', id })
 }
 
-export const list = (dispatch, letter) => {
-  let cardList = window.localStorage.getItem('cardList')
-  cardList = JSON.parse(cardList) || {}
-  dispatch({ type: 'SET_CARD_LIST', cardList })
-}
-export const setCardInfo = (dispatch, cardId) => {
+export const setCardInfo = (dispatch, cardId, cardInfo) => {
   const id = cardId || uuidv4()
 
-  dispatch({ type: 'SET_CARD_INFO', id })
+  dispatch({
+    type: 'SET_CARD_INFO',
+    id,
+    cardInfo: { ...cardInfo, createdAt: cardInfo.createdAt || Date.now(), id }
+  })
 }
 
 export const toggleModal = (dispatch, isModalOpen) => {

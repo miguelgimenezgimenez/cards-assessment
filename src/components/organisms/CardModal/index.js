@@ -9,7 +9,7 @@ import * as cardActions from '../../../actions/card'
 
 class CardModal extends Component {
   setCardInfo (id) {
-    cardActions.setCardInfo(this.props.dispatch, id)
+    cardActions.setCardInfo(this.props.dispatch, id, this.props.currentCard)
   }
 
   updateCurrentCard (event, field) {

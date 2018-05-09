@@ -21,10 +21,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {
-    cardActions.list(this.props.dispatch)
-  }
-
   handleChange (value) {
     this.setState({ value })
   }

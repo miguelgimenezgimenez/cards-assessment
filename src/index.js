@@ -8,7 +8,13 @@ import createStore from './store'
 import App from './components/pages/App'
 
 const muiTheme = getMuiTheme({})
-const store = createStore({})
+
+const persistedState = localStorage.getItem('cardList') ? JSON.parse(localStorage.getItem('cardList')) : {}
+
+const store = createStore(persistedState)
+store.subscribe(() => {
+  localStorage.setItem('cardList', JSON.stringify(store.getState()))
+})
 
 const render = () => {
   ReactDOM.render(
