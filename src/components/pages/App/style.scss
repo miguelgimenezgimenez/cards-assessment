@@ -1,8 +1,18 @@
 .addButton {
-    position: absolute;
+    position: fixed;
     right:80px;
     bottom: 80px;
 }
 .cardContainer {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.dropDown {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 300px;
+    text-align: center;
 }

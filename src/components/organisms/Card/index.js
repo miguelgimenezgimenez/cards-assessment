@@ -37,9 +37,10 @@ class Card extends Component {
         onMouseLeave={() => this.mouseOver(false)}
 
       >
-        <div className={style.mediaContainer} >
-          <img src={card.imageUrl} alt="" onError={this.setImageError} />
-          {card.title}
+        <div className={style.mediaContainer} style={{ backgroundImage: `url(${card.imageUrl})` }} >
+          <div className={style.title} >
+            {card.title}
+          </div>
         </div>
         <div className={style.description} >
           {card.description}

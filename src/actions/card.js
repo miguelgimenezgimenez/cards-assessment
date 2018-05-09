@@ -5,15 +5,12 @@ export const deleteCard = (dispatch, id) => {
 export const list = (dispatch, letter) => {
   let cardList = window.localStorage.getItem('cardList')
   cardList = JSON.parse(cardList) || {}
-  dispatch({
-    type: 'SET_CARD_LIST', cardList
-  })
+  dispatch({ type: 'SET_CARD_LIST', cardList })
 }
-export const setCardInfo = (dispatch, id) => {
-  dispatch({
-    type: 'SET_CARD_INFO',
-    id
-  })
+export const setCardInfo = (dispatch, cardId) => {
+  const id = cardId || uuidv4()
+
+  dispatch({ type: 'SET_CARD_INFO', id })
 }
 
 export const toggleModal = (dispatch, isModalOpen) => {

@@ -24,18 +24,11 @@ module.exports = {
         loader: 'file-loader?publicPath=/'
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         loaders: [
           'style-loader',
           'css-loader?modules&sourceMap&localIdentName=[name]_[local]_[hash:base64:5]',
           'sass-loader?sourceMap'
-        ]
-      },
-      {
-        test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader'
         ]
       },
       {

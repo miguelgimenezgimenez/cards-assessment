@@ -7,7 +7,8 @@ const INITIAL_STATE = {
     title: '',
     description: '',
     imageUrl: '',
-    id: ''
+    id: '',
+    createdAt: Date.now()
   },
   isModalOpen: false
 }
@@ -15,25 +16,26 @@ const INITIAL_STATE = {
 const deleteCard = (state, id) => {
   const cardList = { ...state.cardList }
   delete cardList[id]
-  window.localStorage.setItem('cardList', JSON.stringify(cardList))
+  localStorage.setItem('cardList', JSON.stringify(cardList))
   return { ...state, cardList }
 }
 const setError = (state, error) => ({ ...state, error, loading: false })
 
 const setCardInfo = (state, cardId) => {
-  const { title, description, imageUrl } = state.current
-  let cardList = window.localStorage.getItem('cardList')
-  cardList = JSON.parse(cardList) || {}
-
+  const { title, description, imageUrl, createdAt } = state.current
+  // let cardList = localStorage.getItem('cardList')
+  // cardList = JSON.parse(cardList) || {}
+  const { cardList } = state
   const id = cardId || uuidv4()
   cardList[id] = {
     title,
     description,
-    imageUrl: imageUrl || './logo-Tiendeo.png',
-    id
+    imageUrl: imageUrl || './default.jpg',
+    id,
+    createdAt
   }
 
-  window.localStorage.setItem('cardList', JSON.stringify(cardList))
+  localStorage.setItem('cardList', JSON.stringify(cardList))
   return { ...state, cardList, current: { title: '', description: '', imageUrl: '' }, isModalOpen: false }
 }
 const setCardList = (state, cardList) => ({ ...state, cardList })

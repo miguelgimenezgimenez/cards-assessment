@@ -9,7 +9,10 @@
         "describe": true,
         "fetch": true,
         "it": true,
-        "should": true
+        "should": true,
+        "test": true,
+        "expect": true,
+        "localStorage": true
     },
     "rules": {
         "object-curly-newline": 0,
