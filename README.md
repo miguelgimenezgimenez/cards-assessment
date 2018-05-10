@@ -25,9 +25,9 @@ Al final he realizado las dos pruebas.
 Para el Frontend he usado react , redux y una configuracion muy simple de Webpack.
 En este proyecto he guardado la mayoria del estado de la aplicacion en el store de redux, guardando el estado de la aplicacion en el localStorage de la siguiente manera :
 
-	``store.subscribe(() => {
-	  localStorage.setItem('cardList', JSON.stringify(store.getState()))
-	}) ``
+``store.subscribe(() => {
+ localStorage.setItem('cardList', JSON.stringify(store.getState()))
+}) ``
 
 La prueba de backend se puede encontrar en la carpeta de utils.
 
