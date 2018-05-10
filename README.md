@@ -59,7 +59,7 @@ Para los tests unitarios he utilizado jest, testeando simplemente las acciones ,
 Del texto yo entiendo que un cliente es un usuario de la aplicacion , que puede añadir como favoritos a las diversas tiendas, y estas pueden tener distintas ofertas y catalogos. 
 
 
-![Alt text](diagramaDb.png?raw=true "Title")
+![Alt text](diagramaBd.png?raw=true "Title")
 
 
 
