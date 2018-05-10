@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import createStore from './store'
-import App from './components/pages/App'
+import App from './components/organisms/App'
 
 const muiTheme = getMuiTheme({})
 

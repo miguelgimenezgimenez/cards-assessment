@@ -8,8 +8,8 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 
 import * as cardActions from '../../../actions/card'
-import CardModal from '../../organisms/CardModal'
-import Card from '../../organisms/Card'
+import CardModal from '../../molecules/CardModal'
+import Card from '../../molecules/Card'
 import Iterator from '../../../../utils/Iterator'
 import style from './style.scss'
 

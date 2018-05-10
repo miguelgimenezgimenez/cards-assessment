@@ -11,6 +11,7 @@ app.set('view engine', 'html')
 app.set('views', path.join(__dirname, 'www'))
 
 app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'assets')))
 
 app.use('/', (req, res) => res.render('index.html'))
 
