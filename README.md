@@ -25,9 +25,9 @@ Al final he realizado las dos pruebas.
 Para el Frontend he usado react , redux y una configuracion muy simple de Webpack.
 En este proyecto he guardado la mayoria del estado de la aplicacion en el store de redux, guardando el estado de la aplicacion en el localStorage de la siguiente manera :
 
-	``` store.subscribe(() => {
+	``store.subscribe(() => {
 	  localStorage.setItem('cardList', JSON.stringify(store.getState()))
-	}) ```
+	}) ``
 
 La prueba de backend se puede encontrar en la carpeta de utils.
 
@@ -47,4 +47,5 @@ Components que estan compuestos de molecules y componentes sencillos.
 
 # Testing:
 
-Para los tests unitarios he utilizado jest, testeando simplemente las acciones y los reducers, y el componente de la prueba de backend. No he tenido tiempo para testear los componentes.
+Para los tests unitarios he utilizado jest, testeando simplemente las acciones ,los reducers, y el componente de la prueba de backend. No he tenido tiempo para testear los componentes.
+
